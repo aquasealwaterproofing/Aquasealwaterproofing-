@@ -20,6 +20,9 @@ import terraceProjectImg from '../../assets/images/regenerated_image_17888703168
 import roofProjectImg from '../../assets/images/regenerated_image_1788870323178.png';
 import brickTerraceBeforeAfter from '../../assets/images/before-after/brick-terrace-before-after.jpg';
 import wallSeepageBeforeAfter from '../../assets/images/before-after/wall-seepage-before-after.jpg';
+import bathroomProjectImg from '../../assets/images/bathroom_waterproofing_1788761884155.jpg';
+import commercialProjectImg from '../../assets/images/commercial_roof_project_1788761902591.jpg';
+import residentialProjectImg from '../../assets/images/residential_exterior_project_1788761918803.jpg';
 
 export interface ProjectItem {
   id: string;
@@ -84,7 +87,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
       surface: 'Sunken Slab & Wall Plinth',
       treatment: 'Heavy-Duty Liquid Membrane & Mesh Reinforcement',
       scope: 'Plumbing Penetrations & Tile Bedding Substrate',
-      image: '/projects/bathroom-waterproofing.jpg',
+      image: bathroomProjectImg,
       description:
         'Concealed waterproofing barrier applied on the sunken slab floor and vertical splash zones prior to tiling and sanitary fitting installation.',
     },
@@ -95,7 +98,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
       surface: 'Commercial Rooftop & Expansion Joints',
       treatment: 'Multi-Coat UV-Resistant Polyurethane Coating',
       scope: 'Large-Span Terrace & Equipment Plinths',
-      image: '/projects/commercial-waterproofing.jpg',
+      image: commercialProjectImg,
       description:
         'Methodical waterproofing on an exposed commercial rooftop, addressing equipment mounting bases and perimeter coping details.',
     },
@@ -106,7 +109,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
       surface: 'Multi-Unit Residential Facade & Parapet',
       treatment: 'Anti-Crack Exterior Rain-Barrier Shield',
       scope: 'Exterior Walls & Parapet Edges',
-      image: '/projects/residential-waterproofing.jpg',
+      image: residentialProjectImg,
       description:
         'Weather-resistant exterior coating applied to outer residential walls to resist rainwater absorption and weathering during heavy monsoon cycles.',
     },

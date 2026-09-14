@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Calendar, Menu, X, Mail } from 'lucide-react';
 import { Button } from '../ui/Button';
+import drFixitLogo from '../../assets/images/dr-fixit-logo-cropped.jpg';
 
 interface BrandHeaderProps {
   onOpenInspectionModal?: () => void;
@@ -83,7 +84,7 @@ export const BrandHeader: React.FC<BrandHeaderProps> = ({
             {/* Exact Dr. Fixit Logo Asset */}
             <div className="flex items-center border border-slate-200 rounded-sm p-1 bg-white shadow-2xs group-hover:border-slate-300 transition-colors">
               <img
-                src="./dr-fixit-logo-cropped.jpg"
+                src={drFixitLogo}
                 alt="Dr. Fixit Official Logo Asset"
                 referrerPolicy="no-referrer"
                 className="h-8 xs:h-9 sm:h-12 w-auto object-contain rounded-xs"

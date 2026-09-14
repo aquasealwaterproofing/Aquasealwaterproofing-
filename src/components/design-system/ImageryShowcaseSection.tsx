@@ -3,6 +3,7 @@ import { Image as ImageIcon, CheckCircle, ShieldAlert, Sparkles, AlertTriangle }
 import { SectionHeading } from '../ui/SectionHeading';
 import { Card } from '../ui/Card';
 import { ImageTreatment } from '../ui/ImageTreatment';
+import drFixitLogo from '../../assets/images/dr-fixit-logo-cropped.jpg';
 
 export const ImageryShowcaseSection: React.FC = () => {
   return (
@@ -43,7 +44,7 @@ export const ImageryShowcaseSection: React.FC = () => {
               </span>
               <div className="p-2 bg-white rounded-lg border border-slate-100 flex items-center justify-center max-w-[280px]">
                 <img
-                  src="./dr-fixit-logo-cropped.jpg"
+                  src={drFixitLogo}
                   alt="Official Dr. Fixit Waterproofing Expert Logo"
                   referrerPolicy="no-referrer"
                   className="w-full h-auto object-contain rounded shadow-2xs"
