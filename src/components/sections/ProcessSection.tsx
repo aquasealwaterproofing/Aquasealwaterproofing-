@@ -31,7 +31,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
   onOpenInspectionModal,
 }) => {
   const { isAdmin } = useAdminMode();
-  const [videoSrc, setVideoSrc] = useState<string>('/process-video.mp4');
+  const [videoSrc, setVideoSrc] = useState<string>('./process-video.mp4');
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [videoFailed, setVideoFailed] = useState<boolean>(false);
@@ -144,12 +144,12 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
   const handleResetVideo = async (e: React.MouseEvent) => {
     e.stopPropagation();
     await clearPersistentVideo('process');
-    setVideoSrc('/process-video.mp4');
+    setVideoSrc('./process-video.mp4');
     setCustomVideoLoaded(false);
     setVideoFailed(false);
     setIsPlaying(true);
     if (videoRef.current) {
-      videoRef.current.src = '/process-video.mp4';
+      videoRef.current.src = './process-video.mp4';
       videoRef.current.load();
       videoRef.current.play().catch(() => {});
     }

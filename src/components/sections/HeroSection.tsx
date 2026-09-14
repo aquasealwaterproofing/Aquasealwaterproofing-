@@ -35,7 +35,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onCallNow,
 }) => {
   const { isAdmin } = useAdminMode();
-  const [videoSrc, setVideoSrc] = useState<string>('/roofseal-video.mp4');
+  const [videoSrc, setVideoSrc] = useState<string>('./roofseal-video.mp4');
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [videoFailed, setVideoFailed] = useState<boolean>(false);
@@ -106,12 +106,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const handleResetVideo = async (e: React.MouseEvent) => {
     e.stopPropagation();
     await clearPersistentVideo('roofseal');
-    setVideoSrc('/roofseal-video.mp4');
+    setVideoSrc('./roofseal-video.mp4');
     setCustomVideoLoaded(false);
     setVideoFailed(false);
     setIsPlaying(true);
     if (videoRef.current) {
-      videoRef.current.src = '/roofseal-video.mp4';
+      videoRef.current.src = './roofseal-video.mp4';
       videoRef.current.load();
       videoRef.current.play().catch(() => {});
     }

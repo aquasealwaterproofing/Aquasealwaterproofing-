@@ -54,7 +54,7 @@ export const BrandFooter: React.FC<BrandFooterProps> = ({
             <div className="flex items-center gap-3.5">
               <div className="flex items-center border border-white/20 rounded-sm p-1.5 bg-white shadow-2xs shrink-0">
                 <img
-                  src="/dr-fixit-logo-cropped.jpg"
+                  src="./dr-fixit-logo-cropped.jpg"
                   alt="Dr. Fixit Official Logo Asset"
                   referrerPolicy="no-referrer"
                   className="h-10 sm:h-12 w-auto object-contain rounded-xs"

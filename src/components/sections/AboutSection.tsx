@@ -133,7 +133,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
             
             <div className="relative w-full rounded-lg overflow-hidden border border-slate-200 shadow-md bg-slate-900 group">
               <img
-                src="/about/about-waterproofing-work.jpg"
+                src="./about/about-waterproofing-work.jpg"
                 alt="Aquaseal professional waterproofing surface preparation and membrane application"
                 referrerPolicy="no-referrer"
                 loading="lazy"

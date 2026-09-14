@@ -22,7 +22,7 @@ import { useAdminMode } from '../../lib/adminAuth';
 
 export const WhyChooseUsSection: React.FC = () => {
   const { isAdmin } = useAdminMode();
-  const [videoSrc, setVideoSrc] = useState<string>('/why-aquaseal-video.mp4');
+  const [videoSrc, setVideoSrc] = useState<string>('./why-aquaseal-video.mp4');
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [videoFailed, setVideoFailed] = useState<boolean>(false);
@@ -100,12 +100,12 @@ export const WhyChooseUsSection: React.FC = () => {
   const handleResetVideo = async (e: React.MouseEvent) => {
     e.stopPropagation();
     await clearPersistentVideo('why-aquaseal');
-    setVideoSrc('/why-aquaseal-video.mp4');
+    setVideoSrc('./why-aquaseal-video.mp4');
     setCustomVideoLoaded(false);
     setVideoFailed(false);
     setIsPlaying(true);
     if (videoRef.current) {
-      videoRef.current.src = '/why-aquaseal-video.mp4';
+      videoRef.current.src = './why-aquaseal-video.mp4';
       videoRef.current.load();
       videoRef.current.play().catch(() => {});
     }

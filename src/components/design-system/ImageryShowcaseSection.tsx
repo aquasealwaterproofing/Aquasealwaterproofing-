@@ -43,7 +43,7 @@ export const ImageryShowcaseSection: React.FC = () => {
               </span>
               <div className="p-2 bg-white rounded-lg border border-slate-100 flex items-center justify-center max-w-[280px]">
                 <img
-                  src="/dr-fixit-logo-cropped.jpg"
+                  src="./dr-fixit-logo-cropped.jpg"
                   alt="Official Dr. Fixit Waterproofing Expert Logo"
                   referrerPolicy="no-referrer"
                   className="w-full h-auto object-contain rounded shadow-2xs"
