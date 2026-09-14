@@ -22,6 +22,7 @@ import {
   clearPersistentVideo
 } from '../../lib/videoStorage';
 import { useAdminMode } from '../../lib/adminAuth';
+import defaultProcessVideo from '../../assets/videos/process-video.mp4';
 
 interface ProcessSectionProps {
   onOpenInspectionModal: () => void;
@@ -31,7 +32,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
   onOpenInspectionModal,
 }) => {
   const { isAdmin } = useAdminMode();
-  const [videoSrc, setVideoSrc] = useState<string>('./process-video.mp4');
+  const [videoSrc, setVideoSrc] = useState<string>(defaultProcessVideo);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [videoFailed, setVideoFailed] = useState<boolean>(false);
@@ -55,6 +56,18 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
       isMounted = false;
     };
   }, []);
+
+  // Ensure autoplay works across modern mobile and desktop browsers
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+      videoRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        setIsPlaying(false);
+      });
+    }
+  }, [videoSrc, isMuted]);
 
   const steps = [
     {
@@ -144,12 +157,12 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
   const handleResetVideo = async (e: React.MouseEvent) => {
     e.stopPropagation();
     await clearPersistentVideo('process');
-    setVideoSrc('./process-video.mp4');
+    setVideoSrc(defaultProcessVideo);
     setCustomVideoLoaded(false);
     setVideoFailed(false);
     setIsPlaying(true);
     if (videoRef.current) {
-      videoRef.current.src = './process-video.mp4';
+      videoRef.current.src = defaultProcessVideo;
       videoRef.current.load();
       videoRef.current.play().catch(() => {});
     }
@@ -336,12 +349,16 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
 
               {/* Video Display Container: 16:9 Aspect Ratio with object-contain */}
               <div className="relative w-full aspect-video bg-slate-950 flex items-center justify-center overflow-hidden">
-                {videoFailed && !customVideoLoaded ? (
+                {videoFailed ? (
                   <div className="relative w-full h-full flex flex-col items-center justify-center p-4 text-center text-white bg-slate-900">
                     <div
                       onClick={() => {
-                        if (isAdmin) fileInputRef.current?.click();
-                        else onOpenInspectionModal();
+                        setVideoFailed(false);
+                        setVideoSrc(defaultProcessVideo);
+                        if (videoRef.current) {
+                          videoRef.current.src = defaultProcessVideo;
+                          videoRef.current.play().catch(() => {});
+                        }
                       }}
                       className="w-12 h-12 rounded-full bg-[#FFD700] text-[#0A2540] flex items-center justify-center mb-2 shadow-lg cursor-pointer"
                     >
@@ -362,7 +379,14 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({
                     loop
                     muted={isMuted}
                     playsInline
-                    onError={() => setVideoFailed(true)}
+                    onError={() => {
+                      if (videoSrc !== defaultProcessVideo) {
+                        setVideoSrc(defaultProcessVideo);
+                        setCustomVideoLoaded(false);
+                      } else {
+                        setVideoFailed(true);
+                      }
+                    }}
                     onPlay={() => setIsPlaying(true)}
                     onPause={() => setIsPlaying(false)}
                     onClick={handleTogglePlay}

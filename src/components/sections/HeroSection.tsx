@@ -24,6 +24,7 @@ import {
 } from '../../lib/videoStorage';
 import { useAdminMode } from '../../lib/adminAuth';
 import heroBgImage from '../../assets/images/waterproof_roof_hero_1789057634476.jpg';
+import defaultRoofsealVideo from '../../assets/videos/roofseal-video.mp4';
 
 interface HeroSectionProps {
   onOpenInspectionModal: () => void;
@@ -35,7 +36,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onCallNow,
 }) => {
   const { isAdmin } = useAdminMode();
-  const [videoSrc, setVideoSrc] = useState<string>('./roofseal-video.mp4');
+  const [videoSrc, setVideoSrc] = useState<string>(defaultRoofsealVideo);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isMuted, setIsMuted] = useState<boolean>(true);
   const [videoFailed, setVideoFailed] = useState<boolean>(false);
@@ -59,6 +60,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       isMounted = false;
     };
   }, []);
+
+  // Ensure autoplay works across modern mobile and desktop browsers
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+      videoRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        // Autoplay policy: pause state until user interacts
+        setIsPlaying(false);
+      });
+    }
+  }, [videoSrc, isMuted]);
 
   const handleTogglePlay = () => {
     if (!videoRef.current) return;
@@ -106,12 +120,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const handleResetVideo = async (e: React.MouseEvent) => {
     e.stopPropagation();
     await clearPersistentVideo('roofseal');
-    setVideoSrc('./roofseal-video.mp4');
+    setVideoSrc(defaultRoofsealVideo);
     setCustomVideoLoaded(false);
     setVideoFailed(false);
     setIsPlaying(true);
     if (videoRef.current) {
-      videoRef.current.src = './roofseal-video.mp4';
+      videoRef.current.src = defaultRoofsealVideo;
       videoRef.current.load();
       videoRef.current.play().catch(() => {});
     }
@@ -369,7 +383,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
                 {/* Video Container: Clean 16:9 Aspect Ratio with object-contain (100% visible, NEVER cropped) */}
                 <div className="relative w-full aspect-video bg-slate-950 flex items-center justify-center overflow-hidden">
-                  {videoFailed && !customVideoLoaded ? (
+                  {videoFailed ? (
                     <div className="relative w-full h-full flex flex-col items-center justify-center p-4 text-center text-white bg-slate-900">
                       <img
                         src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80"
@@ -381,8 +395,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                         <div
                           className="w-12 h-12 rounded-full bg-[#FFD700] text-[#0A2540] flex items-center justify-center mb-2 shadow-lg cursor-pointer"
                           onClick={() => {
-                            if (isAdmin) fileInputRef.current?.click();
-                            else onOpenInspectionModal();
+                            setVideoFailed(false);
+                            setVideoSrc(defaultRoofsealVideo);
+                            if (videoRef.current) {
+                              videoRef.current.src = defaultRoofsealVideo;
+                              videoRef.current.play().catch(() => {});
+                            }
                           }}
                         >
                           <Play className="w-5 h-5 fill-current translate-x-0.5" />
@@ -404,7 +422,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                       loop
                       muted={isMuted}
                       playsInline
-                      onError={() => setVideoFailed(true)}
+                      onError={() => {
+                        if (videoSrc !== defaultRoofsealVideo) {
+                          setVideoSrc(defaultRoofsealVideo);
+                          setCustomVideoLoaded(false);
+                        } else {
+                          setVideoFailed(true);
+                        }
+                      }}
                       onPlay={() => setIsPlaying(true)}
                       onPause={() => setIsPlaying(false)}
                       onClick={handleTogglePlay}
