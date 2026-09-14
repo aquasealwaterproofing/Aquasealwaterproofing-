@@ -1,0 +1,6 @@
+{
+  "name": "Aquaseal Waterproofing | Professional Waterproofing Solutions",
+  "description": "Professional waterproofing solutions for terraces, roofs, walls, bathrooms and moisture-prone areas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
