@@ -10,7 +10,7 @@ import {
   FileText,
   Calendar
 } from 'lucide-react';
-import drFixitLogo from '../../assets/images/dr-fixit-logo-cropped.jpg';
+import aquasealLogo from '../../assets/images/aquaseal-brand-logo.jpg';
 
 interface BrandFooterProps {
   onOpenInspectionModal?: (servicePrefill?: string) => void;
@@ -51,26 +51,15 @@ export const BrandFooter: React.FC<BrandFooterProps> = ({
           
           {/* Brand & Description Column (Span 4) */}
           <div className="lg:col-span-4 space-y-5">
-            {/* Dr. Fixit Logo + AQUASEAL WATERPROOFING Branding */}
+            {/* AQUASEAL WATERPROOFING Official Branding */}
             <div className="flex items-center gap-3.5">
-              <div className="flex items-center border border-white/20 rounded-sm p-1.5 bg-white shadow-2xs shrink-0">
+              <div className="flex items-center rounded-sm p-1.5 bg-white shadow-xs shrink-0">
                 <img
-                  src={drFixitLogo}
-                  alt="Dr. Fixit Official Logo Asset"
+                  src={aquasealLogo}
+                  alt="AQUASEAL WATERPROOFING Official Logo"
                   referrerPolicy="no-referrer"
-                  className="h-10 sm:h-12 w-auto object-contain rounded-xs"
+                  className="h-12 sm:h-14 w-auto object-contain rounded-xs"
                 />
-              </div>
-
-              <div className="h-10 w-px bg-white/20" />
-
-              <div className="flex flex-col justify-center">
-                <span className="text-lg sm:text-xl font-black tracking-tight text-white leading-none uppercase">
-                  AQUASEAL
-                </span>
-                <span className="text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] text-[#FFD700] uppercase leading-none mt-1">
-                  WATERPROOFING
-                </span>
               </div>
             </div>
 

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs && cp -r dist/* docs/ 2>/dev/null || true",
+    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs && cp dist/index.html dist/404.html && rm -rf docs && mkdir -p docs && cp -r dist/* docs/ && cp dist/index.html docs/404.html",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "start": "node dist/server.cjs",

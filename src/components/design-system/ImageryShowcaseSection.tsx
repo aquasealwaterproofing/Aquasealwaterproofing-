@@ -3,7 +3,7 @@ import { Image as ImageIcon, CheckCircle, ShieldAlert, Sparkles, AlertTriangle }
 import { SectionHeading } from '../ui/SectionHeading';
 import { Card } from '../ui/Card';
 import { ImageTreatment } from '../ui/ImageTreatment';
-import drFixitLogo from '../../assets/images/dr-fixit-logo-cropped.jpg';
+import aquasealLogo from '../../assets/images/aquaseal-brand-logo.jpg';
 
 export const ImageryShowcaseSection: React.FC = () => {
   return (
@@ -25,14 +25,14 @@ export const ImageryShowcaseSection: React.FC = () => {
                 Official Provided Asset Verification
               </div>
               <h3 className="text-2xl font-extrabold text-[#0A2540] tracking-tight">
-                Dr. Fixit Official Logo Asset
+                Aquaseal Waterproofing Official Brand Logo
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                As mandated, the official Dr. Fixit graphic asset uploaded by the business is preserved in its authentic, unmodified resolution and ratio. No synthetic recreations, artificial 3D bevels, distortions, or generic substitutions are permitted.
+                The official Aquaseal Waterproofing graphic asset uploaded by the business is preserved in its authentic, unmodified resolution and ratio.
               </p>
               <div className="flex flex-wrap gap-2 text-xs text-slate-500 font-mono pt-1">
-                <span className="bg-slate-100 px-2.5 py-1 rounded">Asset: dr-fixit-logo.jpg</span>
-                <span className="bg-slate-100 px-2.5 py-1 rounded">Display: No Distortion</span>
+                <span className="bg-slate-100 px-2.5 py-1 rounded">Asset: aquaseal-brand-logo.jpg</span>
+                <span className="bg-slate-100 px-2.5 py-1 rounded">Display: Vector/Crisp</span>
                 <span className="bg-slate-100 px-2.5 py-1 rounded">Ratio: Preserved Original</span>
               </div>
             </div>
@@ -44,14 +44,14 @@ export const ImageryShowcaseSection: React.FC = () => {
               </span>
               <div className="p-2 bg-white rounded-lg border border-slate-100 flex items-center justify-center max-w-[280px]">
                 <img
-                  src={drFixitLogo}
-                  alt="Official Dr. Fixit Waterproofing Expert Logo"
+                  src={aquasealLogo}
+                  alt="Official Aquaseal Waterproofing Logo"
                   referrerPolicy="no-referrer"
                   className="w-full h-auto object-contain rounded shadow-2xs"
                 />
               </div>
               <span className="text-[11px] text-slate-500 block mt-2 font-medium">
-                Dr. Fixit Waterproofing Expert
+                Aquaseal Waterproofing
               </span>
             </div>
           </div>

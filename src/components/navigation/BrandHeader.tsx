@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Calendar, Menu, X, Mail } from 'lucide-react';
 import { Button } from '../ui/Button';
-import drFixitLogo from '../../assets/images/dr-fixit-logo-cropped.jpg';
+import aquasealLogo from '../../assets/images/aquaseal-brand-logo.jpg';
 
 interface BrandHeaderProps {
   onOpenInspectionModal?: () => void;
@@ -70,7 +70,7 @@ export const BrandHeader: React.FC<BrandHeaderProps> = ({
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
           
-          {/* Left Side: Official Dr. Fixit Logo Asset + AQUASEAL WATERPROOFING */}
+          {/* Left Side: AQUASEAL WATERPROOFING Official Brand Logo */}
           <a
             href="#home"
             onClick={(e) => {
@@ -78,30 +78,14 @@ export const BrandHeader: React.FC<BrandHeaderProps> = ({
               handleNavClick('home', '#home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="flex items-center gap-2 xs:gap-3 sm:gap-3.5 shrink-0 group py-1"
+            className="flex items-center gap-2 xs:gap-3 shrink-0 group py-1"
             aria-label="AQUASEAL WATERPROOFING Home"
           >
-            {/* Exact Dr. Fixit Logo Asset */}
-            <div className="flex items-center border border-slate-200 rounded-sm p-1 bg-white shadow-2xs group-hover:border-slate-300 transition-colors">
-              <img
-                src={drFixitLogo}
-                alt="Dr. Fixit Official Logo Asset"
-                referrerPolicy="no-referrer"
-                className="h-8 xs:h-9 sm:h-12 w-auto object-contain rounded-xs"
-              />
-            </div>
-
-            <div className="h-7 sm:h-9 w-px bg-slate-200 hidden xs:block" />
-
-            {/* AQUASEAL WATERPROOFING Brand Lockup */}
-            <div className="flex flex-col justify-center">
-              <span className="text-base xs:text-lg sm:text-xl font-black tracking-tight text-[#0A2540] leading-none uppercase">
-                AQUASEAL
-              </span>
-              <span className="text-[9px] xs:text-[10px] sm:text-[11px] font-extrabold tracking-[0.18em] xs:tracking-[0.2em] text-[#0A2540] uppercase leading-none mt-0.5 sm:mt-1">
-                WATERPROOFING
-              </span>
-            </div>
+            <img
+              src={aquasealLogo}
+              alt="AQUASEAL WATERPROOFING"
+              className="h-10 xs:h-12 sm:h-14 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+            />
           </a>
 
           {/* Center: Desktop Navigation Links (Large Screens >= 1024px) */}

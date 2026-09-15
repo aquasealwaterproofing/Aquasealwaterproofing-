@@ -44,7 +44,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white text-[#1A2433] flex flex-col selection:bg-[#0A2540] selection:text-white overflow-x-hidden">
       
-      {/* 1. Global Brand Header with Official Dr. Fixit Asset & Primary Actions */}
+      {/* 1. Global Brand Header with Official Aquaseal Brand Logo & Primary Actions */}
       <BrandHeader
         onOpenInspectionModal={() => handleOpenInspection()}
         onCallNow={() => setIsCallOpen(true)}
